@@ -2,16 +2,9 @@ import requests
 import re
 from discord_webhook import DiscordWebhook
 
-class Video:
-
-    def __init__(self, WebhookUrl, channel_url, channel_name, message):
-        self.WebhookUrl = WebhookUrl
-        self.channel_url = channel_url
-        self.channel_name = channel_name
-        self.message = message
-
-    def CheckForUploads(self):
-        html = requests.get(self.channel_url+"/videos").text
+class Video():
+    def CheckForUploads(WebhookUrl: str, channel_url: str, message: str):
+        html = requests.get(channel_url+"/videos").text
 
 
         try:
@@ -20,8 +13,9 @@ class Video:
             pass
 
         PrevUrl = None
-        webhook = DiscordWebhook(url=self.WebhookUrl, content=self.message)
+        webhook = DiscordWebhook(url=WebhookUrl, content=message)
         if PrevUrl==None:
+            PrevUrl = latest_video_url
             webhook.execute()
         elif not PrevUrl == latest_video_url:
             PrevUrl = latest_video_url
