@@ -3,7 +3,7 @@ import codecs
 import os
 
 here = os.path.abspath(os.path.dirname(__file__))
-DESCRIPTION = 'Easy YouTube Notifications'
+DESCRIPTION = 'Easy YouTube Upload Notifications'
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     l_d = "\n" + fh.read()
 
