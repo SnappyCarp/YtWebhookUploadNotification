@@ -3,7 +3,7 @@ import re
 from discord_webhook import DiscordWebhook
 
 class Channel():
-    def CheckForNewUploads(WebhookUrl:str, channel_url:str, channel_name:str):
+    def CheckForNewUploads(WebhookUrl:str, channel_url:str, message:str):
         html = requests.get(channel_url+"/videos").text
 
         try:
@@ -12,7 +12,7 @@ class Channel():
             pass
 
         PrevUrl = None
-        webhook = DiscordWebhook(url=WebhookUrl, content=f"@everyone {channel_name} Just Uploaded A Video Go Check It Out: {latest_video_url}")
+        webhook = DiscordWebhook(url=WebhookUrl, content=message)
         if PrevUrl==None:
             PrevUrl = latest_video_url
             webhook.execute()
