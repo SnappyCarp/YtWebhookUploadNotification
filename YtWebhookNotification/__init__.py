@@ -1,1 +1,1 @@
-from YtWebhookNotification.Video import Video
+from YtWebhookNotification.Channel import Channel
