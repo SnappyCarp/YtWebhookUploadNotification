@@ -6,7 +6,6 @@ class Video():
     def CheckForUploads(WebhookUrl: str, channel_url: str, message: str):
         html = requests.get(channel_url+"/videos").text
 
-
         try:
             latest_video_url = "https://www.youtube.com/watch?v=" + re.search('(?<="videoId":").*?(?=")', html).group()
         except:
